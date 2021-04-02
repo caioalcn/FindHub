@@ -9,21 +9,39 @@
 /* Begin PBXBuildFile section */
 		542564BD261666CD0038CECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564BC261666CD0038CECC /* AppDelegate.swift */; };
 		542564BF261666CD0038CECC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564BE261666CD0038CECC /* SceneDelegate.swift */; };
-		542564C1261666CD0038CECC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564C0261666CD0038CECC /* ContentView.swift */; };
 		542564C3261666DA0038CECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542564C2261666DA0038CECC /* Assets.xcassets */; };
-		542564C6261666DA0038CECC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542564C5261666DA0038CECC /* Preview Assets.xcassets */; };
 		542564C9261666DA0038CECC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542564C7261666DA0038CECC /* LaunchScreen.storyboard */; };
+		542564D3261668D50038CECC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564D2261668D50038CECC /* MainViewController.swift */; };
+		542564DD26166A860038CECC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564DC26166A860038CECC /* AppCoordinator.swift */; };
+		542564E026166AC90038CECC /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564DF26166AC90038CECC /* CoordinatorType.swift */; };
+		542564E926166C580038CECC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564E826166C580038CECC /* MainView.swift */; };
+		542564EC26166C640038CECC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564EB26166C640038CECC /* MainViewModel.swift */; };
+		542564F3261672850038CECC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564F2261672850038CECC /* Router.swift */; };
+		542564F6261672B10038CECC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564F5261672B10038CECC /* HTTPMethod.swift */; };
+		542564F9261672DC0038CECC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564F8261672DC0038CECC /* Service.swift */; };
+		542564FD2616732B0038CECC /* APIGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564FC2616732B0038CECC /* APIGitHub.swift */; };
+		54256502261684B90038CECC /* DetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54256501261684B90038CECC /* DetailUserViewController.swift */; };
+		54F888092616B2FD00D61EC6 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F888082616B2FD00D61EC6 /* IntroView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		542564B9261666CD0038CECC /* FindHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542564BC261666CD0038CECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		542564BE261666CD0038CECC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		542564C0261666CD0038CECC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		542564C2261666DA0038CECC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		542564C5261666DA0038CECC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		542564C8261666DA0038CECC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		542564CA261666DA0038CECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		542564D2261668D50038CECC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		542564DC26166A860038CECC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		542564DF26166AC90038CECC /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		542564E826166C580038CECC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		542564EB26166C640038CECC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		542564F2261672850038CECC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		542564F5261672B10038CECC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		542564F8261672DC0038CECC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		542564FC2616732B0038CECC /* APIGitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGitHub.swift; sourceTree = "<group>"; };
+		54256501261684B90038CECC /* DetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewController.swift; sourceTree = "<group>"; };
+		54F888082616B2FD00D61EC6 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,23 +74,104 @@
 		542564BB261666CD0038CECC /* FindHub */ = {
 			isa = PBXGroup;
 			children = (
-				542564BC261666CD0038CECC /* AppDelegate.swift */,
-				542564BE261666CD0038CECC /* SceneDelegate.swift */,
-				542564C0261666CD0038CECC /* ContentView.swift */,
-				542564C2261666DA0038CECC /* Assets.xcassets */,
-				542564C7261666DA0038CECC /* LaunchScreen.storyboard */,
-				542564CA261666DA0038CECC /* Info.plist */,
-				542564C4261666DA0038CECC /* Preview Content */,
+				542564D626166A0F0038CECC /* AppDelegate */,
+				542564D726166A190038CECC /* Models */,
+				542564D826166A280038CECC /* Protocols */,
+				542564D926166A2F0038CECC /* Resources */,
+				542564DA26166A360038CECC /* Screens */,
+				542564DB26166A3E0038CECC /* Service */,
 			);
 			path = FindHub;
 			sourceTree = "<group>";
 		};
-		542564C4261666DA0038CECC /* Preview Content */ = {
+		542564D626166A0F0038CECC /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				542564C5261666DA0038CECC /* Preview Assets.xcassets */,
+				542564BC261666CD0038CECC /* AppDelegate.swift */,
+				542564BE261666CD0038CECC /* SceneDelegate.swift */,
+				542564DC26166A860038CECC /* AppCoordinator.swift */,
 			);
-			path = "Preview Content";
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		542564D726166A190038CECC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		542564D826166A280038CECC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				542564DF26166AC90038CECC /* CoordinatorType.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		542564D926166A2F0038CECC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				542564C7261666DA0038CECC /* LaunchScreen.storyboard */,
+				542564CA261666DA0038CECC /* Info.plist */,
+				542564C2261666DA0038CECC /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		542564DA26166A360038CECC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				54F888032616B25300D61EC6 /* LaunchAnimation */,
+				542564E426166BE40038CECC /* Detail */,
+				542564E326166BDE0038CECC /* Main */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		542564DB26166A3E0038CECC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				542564F2261672850038CECC /* Router.swift */,
+				542564F5261672B10038CECC /* HTTPMethod.swift */,
+				542564F8261672DC0038CECC /* Service.swift */,
+				542564FB2616730C0038CECC /* Calls */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		542564E326166BDE0038CECC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				542564D2261668D50038CECC /* MainViewController.swift */,
+				542564E826166C580038CECC /* MainView.swift */,
+				542564EB26166C640038CECC /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		542564E426166BE40038CECC /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				54256501261684B90038CECC /* DetailUserViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		542564FB2616730C0038CECC /* Calls */ = {
+			isa = PBXGroup;
+			children = (
+				542564FC2616732B0038CECC /* APIGitHub.swift */,
+			);
+			path = Calls;
+			sourceTree = "<group>";
+		};
+		54F888032616B25300D61EC6 /* LaunchAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				54F888082616B2FD00D61EC6 /* IntroView.swift */,
+			);
+			path = LaunchAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,7 +232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				542564C9261666DA0038CECC /* LaunchScreen.storyboard in Resources */,
-				542564C6261666DA0038CECC /* Preview Assets.xcassets in Resources */,
 				542564C3261666DA0038CECC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,9 +243,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542564DD26166A860038CECC /* AppCoordinator.swift in Sources */,
+				542564E926166C580038CECC /* MainView.swift in Sources */,
 				542564BD261666CD0038CECC /* AppDelegate.swift in Sources */,
+				542564F3261672850038CECC /* Router.swift in Sources */,
 				542564BF261666CD0038CECC /* SceneDelegate.swift in Sources */,
-				542564C1261666CD0038CECC /* ContentView.swift in Sources */,
+				54256502261684B90038CECC /* DetailUserViewController.swift in Sources */,
+				54F888092616B2FD00D61EC6 /* IntroView.swift in Sources */,
+				542564D3261668D50038CECC /* MainViewController.swift in Sources */,
+				542564E026166AC90038CECC /* CoordinatorType.swift in Sources */,
+				542564F9261672DC0038CECC /* Service.swift in Sources */,
+				542564F6261672B10038CECC /* HTTPMethod.swift in Sources */,
+				542564EC26166C640038CECC /* MainViewModel.swift in Sources */,
+				542564FD2616732B0038CECC /* APIGitHub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,10 +395,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"FindHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 42QU6XXW6Z;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = FindHub/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FindHub/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,7 +405,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.redice.FindHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,10 +415,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"FindHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 42QU6XXW6Z;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = FindHub/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FindHub/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,7 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.redice.FindHub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
