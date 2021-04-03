@@ -21,6 +21,10 @@
 		542564F9261672DC0038CECC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564F8261672DC0038CECC /* Service.swift */; };
 		542564FD2616732B0038CECC /* APIGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564FC2616732B0038CECC /* APIGitHub.swift */; };
 		54256502261684B90038CECC /* DetailUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54256501261684B90038CECC /* DetailUserViewController.swift */; };
+		544E97B9261788A200F405F3 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E97B8261788A100F405F3 /* CustomNavigationController.swift */; };
+		544E97BD2617ABC200F405F3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E97BC2617ABC200F405F3 /* UIView+Extension.swift */; };
+		544E97C22617BB0100F405F3 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E97C12617BB0100F405F3 /* Repository.swift */; };
+		54C2BBCA2618101E00A0978B /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2BBC92618101E00A0978B /* MainCell.swift */; };
 		54F888092616B2FD00D61EC6 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F888082616B2FD00D61EC6 /* IntroView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +45,10 @@
 		542564F8261672DC0038CECC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		542564FC2616732B0038CECC /* APIGitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGitHub.swift; sourceTree = "<group>"; };
 		54256501261684B90038CECC /* DetailUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUserViewController.swift; sourceTree = "<group>"; };
+		544E97B8261788A100F405F3 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		544E97BC2617ABC200F405F3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		544E97C12617BB0100F405F3 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		54C2BBC92618101E00A0978B /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		54F888082616B2FD00D61EC6 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,12 +82,13 @@
 		542564BB261666CD0038CECC /* FindHub */ = {
 			isa = PBXGroup;
 			children = (
+				544E97BB2617ABA300F405F3 /* Extensions */,
 				542564D626166A0F0038CECC /* AppDelegate */,
+				542564DB26166A3E0038CECC /* Service */,
 				542564D726166A190038CECC /* Models */,
 				542564D826166A280038CECC /* Protocols */,
 				542564D926166A2F0038CECC /* Resources */,
 				542564DA26166A360038CECC /* Screens */,
-				542564DB26166A3E0038CECC /* Service */,
 			);
 			path = FindHub;
 			sourceTree = "<group>";
@@ -90,6 +99,7 @@
 				542564BC261666CD0038CECC /* AppDelegate.swift */,
 				542564BE261666CD0038CECC /* SceneDelegate.swift */,
 				542564DC26166A860038CECC /* AppCoordinator.swift */,
+				544E97B8261788A100F405F3 /* CustomNavigationController.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -97,6 +107,7 @@
 		542564D726166A190038CECC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				544E97C12617BB0100F405F3 /* Repository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,6 +156,7 @@
 			children = (
 				542564D2261668D50038CECC /* MainViewController.swift */,
 				542564E826166C580038CECC /* MainView.swift */,
+				54C2BBC92618101E00A0978B /* MainCell.swift */,
 				542564EB26166C640038CECC /* MainViewModel.swift */,
 			);
 			path = Main;
@@ -164,6 +176,14 @@
 				542564FC2616732B0038CECC /* APIGitHub.swift */,
 			);
 			path = Calls;
+			sourceTree = "<group>";
+		};
+		544E97BB2617ABA300F405F3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				544E97BC2617ABC200F405F3 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		54F888032616B25300D61EC6 /* LaunchAnimation */ = {
@@ -245,10 +265,14 @@
 			files = (
 				542564DD26166A860038CECC /* AppCoordinator.swift in Sources */,
 				542564E926166C580038CECC /* MainView.swift in Sources */,
+				54C2BBCA2618101E00A0978B /* MainCell.swift in Sources */,
 				542564BD261666CD0038CECC /* AppDelegate.swift in Sources */,
+				544E97BD2617ABC200F405F3 /* UIView+Extension.swift in Sources */,
+				544E97C22617BB0100F405F3 /* Repository.swift in Sources */,
 				542564F3261672850038CECC /* Router.swift in Sources */,
 				542564BF261666CD0038CECC /* SceneDelegate.swift in Sources */,
 				54256502261684B90038CECC /* DetailUserViewController.swift in Sources */,
+				544E97B9261788A200F405F3 /* CustomNavigationController.swift in Sources */,
 				54F888092616B2FD00D61EC6 /* IntroView.swift in Sources */,
 				542564D3261668D50038CECC /* MainViewController.swift in Sources */,
 				542564E026166AC90038CECC /* CoordinatorType.swift in Sources */,

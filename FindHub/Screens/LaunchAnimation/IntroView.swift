@@ -77,7 +77,7 @@ final class IntroView: UIView {
             viewsHeightConstraint,
         ])
         
-        perform(#selector(scaleImage), with: nil, afterDelay: 1)
+        perform(#selector(scaleImage), with: nil, afterDelay: 0.5)
     }
     
     private func openAnimation() {

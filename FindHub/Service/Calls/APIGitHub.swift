@@ -7,10 +7,14 @@
 
 import Foundation
 
-class APIGitHub {
-    
-    class func fetchUser(text: String, completion: @escaping (String?, Error?) -> ()) {
-        ServiceLayer.request(router: .search(name: text)) { (response: Result<String, Error>) in
+protocol ServiceProtocol {
+    func fetchUserRepos(user: String, completion: @escaping ([Repository]?, Error?) -> Void)
+}
+
+struct APIGitHub: ServiceProtocol {
+
+    func fetchUserRepos(user: String, completion: @escaping ([Repository]?, Error?) -> ()) {
+        ServiceLayer.request(router: .searchUserRepos(user: user)) { (response: Result<[Repository]?, Error>) in
             switch response {
             case .success(let result):
                 completion(result, nil)

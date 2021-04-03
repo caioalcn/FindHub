@@ -8,7 +8,7 @@
 import Foundation
 
 enum Router {
-    case search(name: String)
+    case searchUserRepos(user: String)
     
     var scheme: String {
         switch self {
@@ -20,27 +20,27 @@ enum Router {
     var base: String {
         switch self {
         default:
-            return "itunes.apple.com"
+            return "api.github.com"
         }
     }
     
     var path: String {
         switch self {
-        case .search(_):
-            return "/search"
+        case .searchUserRepos(let user):
+            return "/users/\(user)/repos"
         }
     }
     
     var parameters: [URLQueryItem] {
         switch self {
-        case .search(let name):
-            return [URLQueryItem(name: "term", value: name), URLQueryItem(name: "media", value: "podcast")]
+        case .searchUserRepos(_):
+            return [URLQueryItem(name: "sort", value: "updated")]
         }
     }
-    
+
     var method: HTTPMethod {
         switch self {
-        case .search(_):
+        case .searchUserRepos(_):
             return .get
         }
     }

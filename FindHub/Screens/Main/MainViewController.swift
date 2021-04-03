@@ -11,10 +11,13 @@ import UIKit
 final class MainViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
+    let searchController = UISearchController(searchResultsController: nil)
     
     private lazy var mainView: MainView = {
         let view = MainView()
-        view.delegate = self
+        view.tableView.delegate = self
+        view.tableView.dataSource = self
+       
         return view
     }()
     
@@ -24,6 +27,8 @@ final class MainViewController: UIViewController {
 
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
+        configureViewModel()
     }
 
     required init?(coder: NSCoder) {
@@ -31,19 +36,64 @@ final class MainViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = self.mainView
+        self.view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .orange
-        self.viewModel.fetchList()
+        title = "Search"
+        setupNavigationSearch()
+    }
+    
+    private func configureViewModel() {
+        viewModel.didFetchList = { [weak self] result, err in
+            self?.mainView.spinner.stopAnimating()
+            self?.mainView.tableView.reloadData()
+        }
+    }
+    
+    private func setupNavigationSearch() {
+        self.navigationItem.searchController = searchController
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.searchTextField.textColor = .white
+        searchController.searchBar.searchTextField.autocapitalizationType = .none
+        searchController.searchBar.placeholder = "Please enter the username"
     }
 }
 
-extension MainViewController: MainViewProtocol {
-    func createList() {
-        coordinator?.detailPush()
+extension MainViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        
+        if !text.isEmpty {
+            mainView.spinner.startAnimating()
+            viewModel.fetchRepos(with: text)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.repositories = []
+        self.mainView.tableView.reloadData()
+    }
+}
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+ 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.repositories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainCell().kCellIdentifier, for: indexPath) as? MainCell else { return UITableViewCell() }
+        
+        viewModel.cellForRepository(repo: viewModel.repositories[indexPath.row])
+        cell.viewModel = viewModel
+        
+        return cell
     }
 }

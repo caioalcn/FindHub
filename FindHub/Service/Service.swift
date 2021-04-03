@@ -8,7 +8,6 @@
 import Foundation
 
 class ServiceLayer {
-    
     class func request<T: Codable>(router: Router, completion: @escaping (Result<T, Error>) -> ()) {
         
         var components = URLComponents()
@@ -33,7 +32,7 @@ class ServiceLayer {
             guard response != nil, let data = data else { return }
             
             print(urlRequest.url ?? "")
-            //print(String(data: data, encoding: .utf8) ?? "Error parsing data")
+          //  print(String(data: data, encoding: .utf8) ?? "Error parsing data")
             
             do {
                 let responseObject = try JSONDecoder().decode(T.self, from: data)

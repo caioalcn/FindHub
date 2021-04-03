@@ -7,38 +7,65 @@
 
 import UIKit
 
-protocol MainViewProtocol: class {
-    func createList()
-}
 
 final class MainView: UIView {
-    
-    weak var delegate: MainViewProtocol?
-    
+        
     private lazy var introView: IntroView = {
         let view = IntroView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
-    
-    private lazy var createButton: UIButton = {
-        
-        let button = UIButton(type: .system)
-        
-        button.setTitle("New List", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.9278818965, green: 0.4297862649, blue: 0, alpha: 1)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Futura-Medium", size: 25)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(createList), for: .touchUpInside)
 
-        return button
+    let spinner: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: .large)
+        activity.hidesWhenStopped = true
+        activity.color = #colorLiteral(red: 0.0862745098, green: 0.1058823529, blue: 0.1333333333, alpha: 1)
+        
+        return activity
     }()
+    
+    lazy var tableView: UITableView = {
+        let tb = UITableView()
+        
+        tb.register(MainCell.self, forCellReuseIdentifier: MainCell().kCellIdentifier)
+        tb.tableFooterView = UIView()
+        tb.backgroundView = spinner
+        tb.separatorStyle = .none
+        tb.rowHeight = UITableView.automaticDimension
+        tb.estimatedRowHeight = 100
+        tb.translatesAutoresizingMaskIntoConstraints = false
+        
+        return tb
+    }()
+
+    /*
+    private lazy var searchTextField: UITextField = {
+        
+        let textField = UITextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "Please insert the username",
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        textField.font = UIFont(name: "Futura", size: 15)
+        textField.layer.cornerRadius = 8
+        textField.layer.borderWidth = 0.5
+        textField.layer.borderColor = UIColor.white.cgColor
+        textField.textColor = .white
+        textField.returnKeyType = .search
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
+        textField.textAlignment = .center
+        textField.delegate = self
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return textField
+    }()
+    */
     
     init() {
         super.init(frame: .zero)
         
+        backgroundColor = #colorLiteral(red: 0.05098039216, green: 0.06666666667, blue: 0.09019607843, alpha: 1)
+        self.hideKeyboardWhenTappedScreen()
         setupLayout()
     }
     
@@ -48,7 +75,7 @@ final class MainView: UIView {
     
     private func setupLayout() {
         
-        addSubview(createButton)
+        addSubview(tableView)
         
         let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })!
         window.addSubview(introView)
@@ -58,15 +85,11 @@ final class MainView: UIView {
             introView.leadingAnchor.constraint(equalTo: window.leadingAnchor),
             introView.trailingAnchor.constraint(equalTo: window.trailingAnchor),
             introView.bottomAnchor.constraint(equalTo: window.bottomAnchor),
-
-            createButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            createButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            createButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            createButton.heightAnchor.constraint(equalToConstant: 60),
+            
+            tableView.topAnchor.constraint(equalTo: self.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-    }
-    
-    @objc private func createList(){
-        delegate?.createList()
     }
 }
