@@ -1,0 +1,142 @@
+[
+    {
+        "name": "Swift",
+        "color": "0xffac45"
+    },
+    {
+        "name": "TypeScript",
+        "color": "0x2b7489"
+    },
+    {
+        "name": "Scala",
+        "color": "#DC322F"
+    },
+    {
+        "name": "Java",
+        "color": "#b07219"
+    },
+    {
+        "name": "PHP",
+        "color": "#4F5D95"
+    },
+    {
+        "name": "Go",
+        "color": "#375eab"
+    },
+    {
+        "name": "Visual Basic",
+        "color": "#945db7"
+    },
+    {
+        "name": "Ruby",
+        "color": "#701516"
+    },
+    {
+        "name": "Objective-C",
+        "color": "#438eff"
+    },
+    {
+        "name": "Kotlin",
+        "color": "#F18E33"
+    },
+    {
+        "name": "Elixir",
+        "color": "#6e4a7e"
+    },
+    {
+        "name": "Dart",
+        "color": "#00B4AB"
+    },
+    {
+        "name": "PLSQL",
+        "color": "#dad8d8"
+    },
+    {
+        "name": "Julia",
+        "color": "#a270ba"
+    },
+    {
+        "name": "Haskell",
+        "color": "#29b544"
+    },
+    {
+        "name": "Perl",
+        "color": "#0298c3"
+    },
+    {
+        "name": "C",
+        "color": "#555555"
+    },
+    {
+        "name": "HTML",
+        "color": "#e44b23"
+    },
+    {
+        "name": "CoffeeScript",
+        "color": "#244776"
+    },
+    {
+        "name": "Vue",
+        "color": "#2c3e50"
+    },
+    {
+        "name": "Lua",
+        "color": "#000080"
+    },
+    {
+        "name": "CSS",
+        "color": "#563d7c"
+    },
+    {
+        "name": "C#",
+        "color": "#178600"
+    },
+    {
+        "name": "Assembly",
+        "color": "#6E4C13"
+    },
+    {
+        "name": "Unity3D Asset",
+        "color": "#ab69a1"
+    },
+    {
+        "name": "Rust",
+        "color": "#dea584"
+    },
+    {
+        "name": "Clojure",
+        "color": "#db5855"
+    },
+    {
+        "name": "OCaml",
+        "color": "#3be133"
+    },
+    {
+        "name": "Pascal",
+        "color": "#b0ce4e"
+    },
+    {
+        "name": "F#",
+        "color": "#b845fc"
+    },
+    {
+        "name": "JavaScript",
+        "color": "#f1e05a"
+    },
+    {
+        "name": "Erlang",
+        "color": "#B83998"
+    },
+    {
+        "name": "Python",
+        "color": "#3572A5"
+    },
+    {
+        "name": "Jupyter Notebook",
+        "color": "#DA5B0B"
+    },
+    {
+        "name": "Handlebars",
+        "color": "#01a9d6"
+    }
+]

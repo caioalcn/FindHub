@@ -9,14 +9,14 @@ import Foundation
 
 protocol MainViewModelProtocol: AnyObject {
     
-    var didFetchList: ([Repository]?, Error?) -> () { get set}
+    var didFetchList: ([Repository]?, Bool, Error?) -> () { get set}
     
-    func fetchRepos(with user: String)
+    func fetchRepos(with user: String, page: Int)
 }
 
 final class MainViewModel: MainViewModelProtocol {
     
-    var didFetchList: ([Repository]?, Error?) -> () = { _,_ in }
+    var didFetchList: ([Repository]?, Bool, Error?) -> () = { _,_,_  in }
     var repositories: [Repository] = []
     
     var name: String = ""
@@ -28,16 +28,29 @@ final class MainViewModel: MainViewModelProtocol {
     var pushedAt: String = ""
     var stargazersCount: Int = 0
     var language: String?
+    var languageColor: String = ""
+    var errorMessage: String = ""
     
-    func fetchRepos(with user: String) {
-        APIGitHub().fetchUserRepos(user: user) { [weak self] (result, err) in
+    func fetchRepos(with user: String, page: Int) {
+        APIGitHub().fetchUserRepos(user: user, page: page) { [weak self] (result, err) in
             guard let result = result else {
-                self?.didFetchList(nil, err)
+                self?.errorMessage = "We're sorry, couldn't find the user :("
+                self?.didFetchList(nil, true, err)
                 return
             }
+                
+            if self?.repositories.isEmpty ?? false {
+                self?.errorMessage = "This user has no repositories!"
+            }
             
-            self?.repositories = result
-            self?.didFetchList(result, nil)
+            var lastPage = false
+            if result.isEmpty {
+                lastPage = true
+            } else {
+                self?.repositories += result
+            }
+            
+            self?.didFetchList(result, lastPage, nil)
         }
     }
     
@@ -51,5 +64,26 @@ final class MainViewModel: MainViewModelProtocol {
         pushedAt = repo.pushedAt
         stargazersCount = repo.stargazersCount
         language = repo.language
+        languageColor = setLanguageColor(languageName: repo.language ?? "")
+    }
+    
+    private func setLanguageColor(languageName: String) -> String {
+        guard let langColors = loadJson(fileName: "github-colors") else { return ""}
+        
+        let selectedColor = langColors.filter({ $0.name == languageName }).first
+        
+        return selectedColor?.color ?? ""
+    }
+    
+    private func loadJson(fileName: String) -> [GitHubColors]? {
+        let decoder = JSONDecoder()
+        guard
+            let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
+            let data = try? Data(contentsOf: url),
+            let colors = try? decoder.decode([GitHubColors].self, from: data)
+        else {
+            return nil
+        }
+        return colors
     }
 }

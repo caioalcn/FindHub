@@ -25,7 +25,6 @@ class ServiceLayer {
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let err = error {
                 completion(.failure(err))
-                print(err.localizedDescription)
                 return
             }
             

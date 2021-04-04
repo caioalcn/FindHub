@@ -8,13 +8,13 @@
 import Foundation
 
 protocol ServiceProtocol {
-    func fetchUserRepos(user: String, completion: @escaping ([Repository]?, Error?) -> Void)
+    func fetchUserRepos(user: String, page: Int, completion: @escaping ([Repository]?, Error?) -> Void)
 }
 
 struct APIGitHub: ServiceProtocol {
 
-    func fetchUserRepos(user: String, completion: @escaping ([Repository]?, Error?) -> ()) {
-        ServiceLayer.request(router: .searchUserRepos(user: user)) { (response: Result<[Repository]?, Error>) in
+    func fetchUserRepos(user: String, page: Int, completion: @escaping ([Repository]?, Error?) -> ()) {
+        ServiceLayer.request(router: .searchUserRepos(user: user, page: page)) { (response: Result<[Repository]?, Error>) in
             switch response {
             case .success(let result):
                 completion(result, nil)

@@ -13,7 +13,7 @@ final class IntroView: UIView {
     let topView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = #colorLiteral(red: 0.03529411765, green: 0.1333333333, blue: 0.2823529412, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.1843137255, green: 0.1843137255, blue: 0.1843137255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -22,7 +22,7 @@ final class IntroView: UIView {
     let bottomView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = #colorLiteral(red: 0.03529411765, green: 0.1333333333, blue: 0.2823529412, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.1843137255, green: 0.1843137255, blue: 0.1843137255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -84,25 +84,25 @@ final class IntroView: UIView {
         viewsHeightConstraint.isActive = false
         topViewBottomConstraint.isActive = false
         
-        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseOut) {
-            self.layoutIfNeeded()
+        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseOut) { [weak self] in
+            self?.layoutIfNeeded()
             
-            self.logoImage.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
-        } completion: { (_) in
-            self.removeFromSuperview()
+            self?.logoImage.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        } completion: { [weak self] _ in
+            self?.removeFromSuperview()
         }
     }
     
     @objc private func scaleImage() {
-        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn) {
+        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseIn) { [weak self] in
             
-            self.logoImage.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            self?.logoImage.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         } completion: { (_) in
-            UIView.animate(withDuration: 0.6) {
-                self.logoImage.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            } completion: {(_) in
+            UIView.animate(withDuration: 0.6) { [weak self] in
+                self?.logoImage.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            } completion: { [weak self] _ in
 
-                self.openAnimation()
+                self?.openAnimation()
             }
         }
     }

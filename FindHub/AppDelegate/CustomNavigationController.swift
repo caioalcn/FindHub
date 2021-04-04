@@ -13,7 +13,8 @@ class CustomNavigationController: UINavigationController {
         super.viewDidLoad()
 
         self.navigationBar.prefersLargeTitles = true
-
+        self.extendedLayoutIncludesOpaqueBars = true
+        
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
             navBarAppearance.configureWithOpaqueBackground()
