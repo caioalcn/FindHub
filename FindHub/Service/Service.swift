@@ -24,7 +24,9 @@ class ServiceLayer {
         
         let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
             if let err = error {
-                completion(.failure(err))
+                DispatchQueue.main.async {
+                    completion(.failure(err))
+                }
                 return
             }
             
@@ -35,7 +37,7 @@ class ServiceLayer {
             
             do {
                 let responseObject = try JSONDecoder().decode(T.self, from: data)
-                
+                    
                 DispatchQueue.main.async {
                     completion(.success(responseObject))
                 }

@@ -173,7 +173,7 @@ final class MainCell: UITableViewCell {
     
     private func updateLayout() {
         repoNameLabel.text = viewModel?.name
-        colorLanguageView.backgroundColor = viewModel?.languageColor.isEmpty ?? false ? UIColor.clear : UIColor.init(hex: viewModel?.languageColor ?? "#ffffff")
+        colorLanguageView.backgroundColor = viewModel?.languageColor.isEmpty ?? false ? UIColor.clear : UIColor.init(hex: viewModel?.languageColor ?? "")
         repoLanguageLabel.text = viewModel?.language ?? ""
         repoStargazersLabel.text = "\(viewModel?.stargazersCount ?? 0)"
     }

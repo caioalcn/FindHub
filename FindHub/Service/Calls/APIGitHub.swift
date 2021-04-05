@@ -23,4 +23,26 @@ struct APIGitHub: ServiceProtocol {
             }
         }
     }
+    
+    func fetchRepoCommits(user: String, repo: String, page: Int, completion: @escaping ([RepositoryCommit]?, Error?) -> ()) {
+        ServiceLayer.request(router: .searchRepoCommits(user: user, repo: repo, page: page)) { (response: Result<[RepositoryCommit]?, Error>) in
+            switch response {
+            case .success(let result):
+                completion(result, nil)
+            case .failure(let err):
+                completion(nil, err)
+            }
+        }
+    }
+    
+    func fetchRepoLanguages(user: String, repo: String, completion: @escaping (Language?, Error?) -> ()) {
+        ServiceLayer.request(router: .searchRepoLanguages(user: user, repo: repo)) { (response: Result<Language?, Error>) in
+            switch response {
+            case .success(let result):
+                completion(result, nil)
+            case .failure(let err):
+                completion(nil, err)
+            }
+        }
+    }
 }

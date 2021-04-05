@@ -64,26 +64,6 @@ final class MainViewModel: MainViewModelProtocol {
         pushedAt = repo.pushedAt
         stargazersCount = repo.stargazersCount
         language = repo.language
-        languageColor = setLanguageColor(languageName: repo.language ?? "")
-    }
-    
-    private func setLanguageColor(languageName: String) -> String {
-        guard let langColors = loadJson(fileName: "github-colors") else { return ""}
-        
-        let selectedColor = langColors.filter({ $0.name == languageName }).first
-        
-        return selectedColor?.color ?? ""
-    }
-    
-    private func loadJson(fileName: String) -> [GitHubColors]? {
-        let decoder = JSONDecoder()
-        guard
-            let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
-            let data = try? Data(contentsOf: url),
-            let colors = try? decoder.decode([GitHubColors].self, from: data)
-        else {
-            return nil
-        }
-        return colors
+        languageColor = repo.language?.setLanguageColor() ?? ""
     }
 }

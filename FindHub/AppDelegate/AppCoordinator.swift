@@ -24,9 +24,9 @@ final class AppCoordinator: CoordinatorType {
         navigationController.setViewControllers([mainController], animated: true)
     }
     
-    public func detailPush() {
-        let detailController = DetailUserController()
-        detailController.coordinator = self
+    public func detailPush(selectedRepository: Repository) {
+        let viewModel = DetailRepoViewModel()
+        let detailController = DetailRepoController(viewModel: viewModel, repository: selectedRepository)
         navigationController.pushViewController(detailController, animated: true)
     }
     

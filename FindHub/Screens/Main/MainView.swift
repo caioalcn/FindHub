@@ -28,7 +28,6 @@ final class MainView: UIView {
         let tb = UITableView()
         
         tb.register(MainCell.self, forCellReuseIdentifier: MainCell().kCellIdentifier)
-        tb.tableFooterView = UIView()
         tb.tableFooterView = loadMoreSpinner
         tb.separatorStyle = .none
         tb.backgroundColor = #colorLiteral(red: 0.05098039216, green: 0.06666666667, blue: 0.09019607843, alpha: 1)
@@ -43,7 +42,6 @@ final class MainView: UIView {
         super.init(frame: .zero)
         
         backgroundColor = #colorLiteral(red: 0.05098039216, green: 0.06666666667, blue: 0.09019607843, alpha: 1)
-        self.hideKeyboardWhenTappedScreen()
         setupLayout()
     }
     

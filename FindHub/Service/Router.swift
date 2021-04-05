@@ -9,6 +9,8 @@ import Foundation
 
 enum Router {
     case searchUserRepos(user: String, page: Int)
+    case searchRepoCommits(user: String, repo: String, page: Int)
+    case searchRepoLanguages(user: String, repo: String)
     
     var scheme: String {
         switch self {
@@ -28,6 +30,10 @@ enum Router {
         switch self {
         case .searchUserRepos(let user, _):
             return "/users/\(user)/repos"
+        case .searchRepoCommits(let user, let repo, _):
+            return "/repos/\(user)/\(repo)/commits"
+        case .searchRepoLanguages(let user, let repo):
+            return "/repos/\(user)/\(repo)/languages"
         }
     }
     
@@ -35,12 +41,16 @@ enum Router {
         switch self {
         case .searchUserRepos(_, let page):
             return [URLQueryItem(name: "per_page", value: "20"), URLQueryItem(name: "page", value: "\(page)"), URLQueryItem(name: "sort", value: "updated")]
+        case .searchRepoCommits(_, _, let page):
+            return [URLQueryItem(name: "per_page", value: "5"), URLQueryItem(name: "page", value: "\(page)"), URLQueryItem(name: "sort", value: "updated")]
+        default:
+            return []
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .searchUserRepos(_,_):
+        case .searchUserRepos(_,_), .searchRepoCommits(_, _, _), .searchRepoLanguages(_, _):
             return .get
         }
     }

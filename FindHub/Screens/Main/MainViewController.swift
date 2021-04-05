@@ -49,6 +49,7 @@ final class MainViewController: UIViewController {
         title = "Search"
         setupNavigationSearch()
     }
+
     
     private func configureViewModel() {
         viewModel.didFetchList = { [weak self] result, lastPage, err in
@@ -129,28 +130,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//
-//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.mainView.tableView.bounds.size.width-40, height: self.mainView.tableView.bounds.size.height))
-//        label.text = viewModel.errorMessage
-//        label.textAlignment = .center
-//        label.textColor = .lightGray
-//        label.numberOfLines = 3
-//        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
-//
-//        return label
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return viewModel.repositories.isEmpty ? 250 : 0
-//    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        coordinator?.detailPush(selectedRepository: viewModel.repositories[indexPath.row])
     }
 }

@@ -138,5 +138,33 @@
     {
         "name": "Handlebars",
         "color": "#01a9d6"
+    },
+    {
+        "name": "Dockerfile",
+        "color": "#384d54"
+    },
+    {
+        "name": "SCSS",
+        "color": "#c6538c"
+    },
+    {
+        "name": "Shell",
+        "color": "#89e051"
+    },
+    {
+        "name": "Less",
+        "color": "#1d365d"
+    },
+    {
+        "name": "EJS",
+        "color": "#a91e50"
+    },
+    {
+        "name": "Sass",
+        "color": "#a53b70"
+    },
+    {
+        "name": "Pug",
+        "color": "#a86454"
     }
 ]
