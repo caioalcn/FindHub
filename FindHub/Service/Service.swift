@@ -30,6 +30,13 @@ class ServiceLayer {
                     return
                 }
                 
+//                if let httpResponse = response as? HTTPURLResponse{
+//                    if httpResponse.statusCode >= 400 {
+//                        print("BadRequest")
+//                        return
+//                    }
+//                }
+                
                 guard response != nil, let data = data else { return }
                 
                 print(urlRequest.url ?? "")

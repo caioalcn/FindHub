@@ -20,7 +20,7 @@ final class MainCell: UITableViewCell {
     let cellView: UIView = {
         let view = UIView(frame: .zero)
         
-        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.1058823529, blue: 0.1333333333, alpha: 1)
+        view.backgroundColor = UIColor(named: AssetsColors.cell.rawValue)
         view.layer.cornerRadius = 8
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -34,7 +34,7 @@ final class MainCell: UITableViewCell {
         label.font = UIFont(name: "Futura-Medium", size: 20)
         label.textAlignment = .left
         label.numberOfLines = 2
-        label.textColor = .white
+        label.textColor = UIColor(named: AssetsColors.label.rawValue)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -44,7 +44,7 @@ final class MainCell: UITableViewCell {
         let view = UIView(frame: .zero)
         
         view.layer.cornerRadius = 7.5
-        view.backgroundColor = .blue
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -68,7 +68,7 @@ final class MainCell: UITableViewCell {
         label.text = "Repo Stargazers"
         label.font = UIFont(name: "Futura", size: 12)
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = UIColor(named: AssetsColors.label.rawValue)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label

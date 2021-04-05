@@ -59,6 +59,9 @@ final class DetailRepoViewModel: DetailRepoViewModelProtocol {
             }
              
             self?.languages = result.name.sorted()
+            if result.name.contains("documentation_url") {
+                self?.languages = []
+            }
             self?.didFetchLanguages(result, err)
         }
     }

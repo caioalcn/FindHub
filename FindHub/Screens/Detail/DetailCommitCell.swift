@@ -19,7 +19,7 @@ final class DetailCommitCell: UITableViewCell {
     let cellView: UIView = {
         let view = UIView(frame: .zero)
         
-        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.1058823529, blue: 0.1333333333, alpha: 1)
+        view.backgroundColor = UIColor(named: AssetsColors.cell.rawValue)
         view.layer.cornerRadius = 8
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -29,7 +29,7 @@ final class DetailCommitCell: UITableViewCell {
     let loadMoreSpinner: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView(style: .large)
         activity.hidesWhenStopped = true
-        activity.color = .white
+        activity.color = UIColor(named: AssetsColors.label.rawValue)
         activity.startAnimating()
         activity.translatesAutoresizingMaskIntoConstraints = false
         
@@ -44,7 +44,7 @@ final class DetailCommitCell: UITableViewCell {
         label.font = UIFont(name: "Futura-Medium", size: 16)
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = UIColor(named: AssetsColors.label.rawValue)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -69,7 +69,7 @@ final class DetailCommitCell: UITableViewCell {
         label.text = "Commit Date"
         label.font = UIFont(name: "Futura", size: 12)
         label.textAlignment = .right
-        label.textColor = .white
+        label.textColor = UIColor(named: AssetsColors.label.rawValue)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
 

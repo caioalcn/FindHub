@@ -19,10 +19,10 @@ final class DetailRepoView: UIView {
         let label = UILabel(frame: .zero)
         
         label.text = "Repo Name"
-        label.font = UIFont(name: "Futura-Medium", size: 28)
+        label.font = UIFont(name: "Futura-Medium", size: 22)
         label.textAlignment = .center
-        label.numberOfLines = 2
-        label.textColor = .white
+        label.numberOfLines = 3
+        label.textColor = UIColor(named: AssetsColors.label.rawValue)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -34,7 +34,7 @@ final class DetailRepoView: UIView {
         label.text = "Repo Stargazers"
         label.font = UIFont(name: "Futura", size: 16)
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = UIColor(named: AssetsColors.label.rawValue)
         label.translatesAutoresizingMaskIntoConstraints = false
 
         return label
@@ -77,7 +77,7 @@ final class DetailRepoView: UIView {
         tb.register(DetailLanguageCell.self, forCellReuseIdentifier: DetailLanguageCell().kCellIdentifier)
         tb.register(DetailCommitCell.self, forCellReuseIdentifier: DetailCommitCell().kCellIdentifier)
         tb.separatorStyle = .none
-        tb.backgroundColor = #colorLiteral(red: 0.05098039216, green: 0.06666666667, blue: 0.09019607843, alpha: 1)
+        tb.backgroundColor = UIColor(named: AssetsColors.background.rawValue)
         tb.rowHeight = UITableView.automaticDimension
         tb.estimatedRowHeight = 200
         tb.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +87,7 @@ final class DetailRepoView: UIView {
     
     init() {
         super.init(frame: .zero)
-        backgroundColor = #colorLiteral(red: 0.05098039216, green: 0.06666666667, blue: 0.09019607843, alpha: 1)
+        backgroundColor = UIColor(named: AssetsColors.cell.rawValue)
 
         setupLayout()
     }

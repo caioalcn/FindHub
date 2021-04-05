@@ -43,6 +43,7 @@
 		54C2BC17261AB3EC00A0978B /* ServiceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2BC16261AB3EC00A0978B /* ServiceErrors.swift */; };
 		54C2BC33261AB7DC00A0978B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2BC32261AB7DC00A0978B /* UIViewController+Extension.swift */; };
 		54C2BC36261ABC3900A0978B /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2BC35261ABC3900A0978B /* ReachabilityManager.swift */; };
+		54C2BC3C261AC8AF00A0978B /* AssetsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2BC3B261AC8AF00A0978B /* AssetsColors.swift */; };
 		54F888092616B2FD00D61EC6 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F888082616B2FD00D61EC6 /* IntroView.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		54C2BC16261AB3EC00A0978B /* ServiceErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceErrors.swift; sourceTree = "<group>"; };
 		54C2BC32261AB7DC00A0978B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		54C2BC35261ABC3900A0978B /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		54C2BC3B261AC8AF00A0978B /* AssetsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsColors.swift; sourceTree = "<group>"; };
 		54F888082616B2FD00D61EC6 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +246,7 @@
 			children = (
 				54C2BC13261AB30700A0978B /* Reachability.swift */,
 				54C2BC35261ABC3900A0978B /* ReachabilityManager.swift */,
+				54C2BC3B261AC8AF00A0978B /* AssetsColors.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				54C2BBCA2618101E00A0978B /* MainCell.swift in Sources */,
 				542564BD261666CD0038CECC /* AppDelegate.swift in Sources */,
 				54C2BC17261AB3EC00A0978B /* ServiceErrors.swift in Sources */,
+				54C2BC3C261AC8AF00A0978B /* AssetsColors.swift in Sources */,
 				544E97C22617BB0100F405F3 /* Repository.swift in Sources */,
 				54C2BBE5261A276700A0978B /* UITableView+Extension.swift in Sources */,
 				54C2BBF3261A54A100A0978B /* RepositoryCommit.swift in Sources */,

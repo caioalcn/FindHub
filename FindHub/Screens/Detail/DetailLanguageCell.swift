@@ -19,7 +19,7 @@ final class DetailLanguageCell: UITableViewCell {
     let loadMoreSpinner: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView(style: .large)
         activity.hidesWhenStopped = true
-        activity.color = .white
+        activity.color = UIColor(named: AssetsColors.label.rawValue)
         activity.startAnimating()
         activity.translatesAutoresizingMaskIntoConstraints = false
         
@@ -29,7 +29,7 @@ final class DetailLanguageCell: UITableViewCell {
     let cellView: UIView = {
         let view = UIView(frame: .zero)
         
-        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.1058823529, blue: 0.1333333333, alpha: 1)
+        view.backgroundColor = UIColor(named: AssetsColors.cell.rawValue)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view

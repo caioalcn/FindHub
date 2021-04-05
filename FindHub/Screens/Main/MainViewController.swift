@@ -68,9 +68,8 @@ final class MainViewController: UIViewController {
         self.navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
-        searchController.searchBar.tintColor = .white
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.searchTextField.textColor = .white
+        searchController.searchBar.tintColor = UIColor(named: AssetsColors.label.rawValue)
+        searchController.searchBar.searchTextField.textColor = UIColor(named: AssetsColors.label.rawValue)
         searchController.searchBar.searchTextField.autocapitalizationType = .none
         searchController.searchBar.placeholder = "Please enter the username"
     }
