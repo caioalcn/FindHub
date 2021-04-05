@@ -53,6 +53,9 @@ final class DetailRepoController: UIViewController {
     
     private func configureViewModel() {
         self.viewModel.didFetchCommits = { [weak self] result, err in
+            if err == ServiceErrors.noInternet {
+                self?.presentAlertWithTitleOneButton(title: "Connection Problem", message: "Please check your internet connnection!", buttonTitle: "OK")
+            }
             self?.isLoadingCommitsData = false
             self?.detailRepoView.tableView.reloadData()
         }

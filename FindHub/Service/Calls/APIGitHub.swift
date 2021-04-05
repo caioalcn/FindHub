@@ -8,13 +8,15 @@
 import Foundation
 
 protocol ServiceProtocol {
-    func fetchUserRepos(user: String, page: Int, completion: @escaping ([Repository]?, Error?) -> Void)
+    func fetchUserRepos(user: String, page: Int, completion: @escaping ([Repository]?, ServiceErrors?) -> Void)
+    func fetchRepoCommits(user: String, repo: String, page: Int, completion: @escaping ([RepositoryCommit]?, ServiceErrors?) -> ())
+    func fetchRepoLanguages(user: String, repo: String, completion: @escaping (Language?, ServiceErrors?) -> ())
 }
 
 struct APIGitHub: ServiceProtocol {
 
-    func fetchUserRepos(user: String, page: Int, completion: @escaping ([Repository]?, Error?) -> ()) {
-        ServiceLayer.request(router: .searchUserRepos(user: user, page: page)) { (response: Result<[Repository]?, Error>) in
+    func fetchUserRepos(user: String, page: Int, completion: @escaping ([Repository]?, ServiceErrors?) -> ()) {
+        ServiceLayer.request(router: .searchUserRepos(user: user, page: page)) { (response: Result<[Repository]?, ServiceErrors>) in
             switch response {
             case .success(let result):
                 completion(result, nil)
@@ -24,8 +26,8 @@ struct APIGitHub: ServiceProtocol {
         }
     }
     
-    func fetchRepoCommits(user: String, repo: String, page: Int, completion: @escaping ([RepositoryCommit]?, Error?) -> ()) {
-        ServiceLayer.request(router: .searchRepoCommits(user: user, repo: repo, page: page)) { (response: Result<[RepositoryCommit]?, Error>) in
+    func fetchRepoCommits(user: String, repo: String, page: Int, completion: @escaping ([RepositoryCommit]?, ServiceErrors?) -> ()) {
+        ServiceLayer.request(router: .searchRepoCommits(user: user, repo: repo, page: page)) { (response: Result<[RepositoryCommit]?, ServiceErrors>) in
             switch response {
             case .success(let result):
                 completion(result, nil)
@@ -35,8 +37,8 @@ struct APIGitHub: ServiceProtocol {
         }
     }
     
-    func fetchRepoLanguages(user: String, repo: String, completion: @escaping (Language?, Error?) -> ()) {
-        ServiceLayer.request(router: .searchRepoLanguages(user: user, repo: repo)) { (response: Result<Language?, Error>) in
+    func fetchRepoLanguages(user: String, repo: String, completion: @escaping (Language?, ServiceErrors?) -> ()) {
+        ServiceLayer.request(router: .searchRepoLanguages(user: user, repo: repo)) { (response: Result<Language?, ServiceErrors>) in
             switch response {
             case .success(let result):
                 completion(result, nil)

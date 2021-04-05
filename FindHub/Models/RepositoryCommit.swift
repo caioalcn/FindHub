@@ -8,6 +8,5 @@
 import Foundation
 
 struct RepositoryCommit: Codable {
-    
     let commit: Commit
 }

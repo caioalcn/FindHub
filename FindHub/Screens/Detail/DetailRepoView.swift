@@ -107,7 +107,7 @@ final class DetailRepoView: UIView {
             stackViewMain.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             stackViewMain.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            tableView.topAnchor.constraint(equalTo: stackViewMain.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: stackViewMain.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),

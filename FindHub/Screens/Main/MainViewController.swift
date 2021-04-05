@@ -53,6 +53,10 @@ final class MainViewController: UIViewController {
     
     private func configureViewModel() {
         viewModel.didFetchList = { [weak self] result, lastPage, err in
+            if err == ServiceErrors.noInternet {
+                self?.presentAlertWithTitleOneButton(title: "Connection Problem", message: "Please check your internet connnection!", buttonTitle: "OK")
+            }
+            
             self?.isLoadingData = false
             self?.mainView.loadMoreSpinner.stopAnimating()
             self?.lastPage = lastPage
@@ -138,6 +142,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        coordinator?.detailPush(selectedRepository: viewModel.repositories[indexPath.row])
+        if !viewModel.repositories.isEmpty {
+            coordinator?.detailPush(selectedRepository: viewModel.repositories[indexPath.row])
+        }
     }
 }
