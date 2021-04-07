@@ -16,7 +16,6 @@ final class MainViewController: UIViewController {
     private lazy var mainView: MainView = {
         let view = MainView()
         view.tableView.delegate = self
-        view.tableView.dataSource = self
         
         return view
     }()
@@ -26,6 +25,8 @@ final class MainViewController: UIViewController {
     private var page = 1
     private var lastPage = false
     private var isLoadingData = false
+    
+    var dataSource: UITableViewDiffableDataSource<Int, Repository>?
     
     init(viewModel: MainViewModel) {
         
@@ -48,19 +49,17 @@ final class MainViewController: UIViewController {
         
         title = "Search"
         setupNavigationSearch()
+        dataSource = setupDataSource()
     }
-
     
     private func configureViewModel() {
-        viewModel.didFetchList = { [weak self] result, lastPage, err in
-            if err == ServiceErrors.noInternet {
-                self?.presentAlertWithTitleOneButton(title: "Connection Problem", message: "Please check your internet connnection!", buttonTitle: "OK")
-            }
-            
-            self?.isLoadingData = false
-            self?.mainView.loadMoreSpinner.stopAnimating()
+        viewModel.didFetchList = { [weak self] result, lastPage in
             self?.lastPage = lastPage
-            self?.mainView.tableView.reloadData()
+            self?.fetchFinished()
+        }
+        
+        viewModel.failFetch = { [weak self] err in
+            self?.fetchFinished()
         }
     }
     
@@ -74,12 +73,47 @@ final class MainViewController: UIViewController {
         searchController.searchBar.placeholder = "Please enter the username"
     }
     
-    private func cleanTable() {
+    private func resetTableView() {
         viewModel.repositories = []
-        viewModel.errorMessage = ""
+        viewModel.responseMessage = ""
         searchUser = ""
         page = 1
-        self.mainView.tableView.reloadData()
+        updateData(animation: false)
+    }
+    
+    private func fetchFinished() {
+        DispatchQueue.main.async {
+            self.isLoadingData = false
+            self.mainView.loadMoreSpinner.stopAnimating()
+            self.updateData(animation: false)
+        }
+    }
+    
+    private func updateData(animation: Bool) {
+        if viewModel.repositories.count == 0 {
+            mainView.tableView.setEmptyMessage(viewModel.responseMessage, isLoading: isLoadingData)
+        } else {
+            mainView.tableView.restore()
+        }
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Repository>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(self.viewModel.repositories)
+        DispatchQueue.main.async {
+            self.dataSource?.apply(snapshot, animatingDifferences: animation)
+        }
+    }
+    
+    private func setupDataSource() -> UITableViewDiffableDataSource<Int, Repository> {
+        return UITableViewDiffableDataSource(tableView: mainView.tableView, cellProvider: { (table, index, model) -> UITableViewCell? in
+            
+            let cell = table.dequeueReusableCell(withIdentifier: MainCell().kCellIdentifier, for: index) as? MainCell
+            
+            self.viewModel.cellForRepository(repo: model)
+            cell?.viewModel = self.viewModel
+            
+            return cell
+        })
     }
 }
 
@@ -90,39 +124,18 @@ extension MainViewController: UISearchBarDelegate {
         
         if !text.isEmpty {
             isLoadingData = true
-            cleanTable()
+            resetTableView()
             searchUser = text
             viewModel.fetchRepos(with: text, page: page)
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        cleanTable()
+        resetTableView()
     }
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if viewModel.repositories.count == 0 {
-            tableView.setEmptyMessage(viewModel.errorMessage, isLoading: isLoadingData)
-        } else {
-            tableView.restore()
-        }
-        
-        return viewModel.repositories.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainCell().kCellIdentifier, for: indexPath) as? MainCell else { return UITableViewCell() }
-        
-        viewModel.cellForRepository(repo: viewModel.repositories[indexPath.row])
-        cell.viewModel = viewModel
-        
-        return cell
-    }
-    
+extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == viewModel.repositories.count - 1 {
             if !lastPage && !isLoadingData {
@@ -133,16 +146,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        if !viewModel.repositories.isEmpty {
-            coordinator?.detailPush(selectedRepository: viewModel.repositories[indexPath.row])
-        }
+        
+        guard let repository = dataSource?.itemIdentifier(for: indexPath) else { return }
+        coordinator?.detailPush(selectedRepository: repository)
     }
 }

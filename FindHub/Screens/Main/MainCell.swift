@@ -155,7 +155,6 @@ final class MainCell: UITableViewCell {
         cellView.addSubview(stackViewMain)
         
         NSLayoutConstraint.activate([
-            
             cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             cellView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             cellView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),

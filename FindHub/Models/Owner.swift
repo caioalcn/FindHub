@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Owner: Codable {
+struct Owner: Codable, Hashable {
     let login: String
     let avatarUrl: String
     

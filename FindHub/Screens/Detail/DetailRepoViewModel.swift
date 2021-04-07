@@ -8,16 +8,20 @@
 import Foundation
 
 protocol DetailRepoViewModelProtocol: AnyObject {
-    var didFetchCommits: ([RepositoryCommit]?, ServiceErrors?) -> () { get set}
-    var didFetchLanguages: (Language?, ServiceErrors?) -> () { get set}
-
+    var didFetchCommits: ([RepositoryCommit]?) -> () { get set}
+    var didFetchLanguages: (Language?) -> () { get set}
+    var failFetchCommits: (String) -> () { get set}
+    var failFetchLanguages: (String) -> () { get set}
+    
     func fetchRepoCommits(with user: String, repo: String, page: Int)
 }
 
 final class DetailRepoViewModel: DetailRepoViewModelProtocol {
    
-    var didFetchCommits: ([RepositoryCommit]?, ServiceErrors?) -> () = { _, _ in }
-    var didFetchLanguages: (Language?, ServiceErrors?) -> () = { _, _ in }
+    var didFetchCommits: ([RepositoryCommit]?) -> () = { _ in }
+    var didFetchLanguages: (Language?) -> () = { _ in }
+    var failFetchCommits: (String) -> () = { _ in }
+    var failFetchLanguages: (String) -> () = { _ in }
 
     var repository: Repository?{
         didSet {
@@ -26,6 +30,7 @@ final class DetailRepoViewModel: DetailRepoViewModelProtocol {
     }
     var commits: [RepositoryCommit] = []
     var languages: [String] = []
+    var responseMessage: String = ""
 
     var name: String = ""
     var stargazersCount: Int = 0
@@ -41,28 +46,32 @@ final class DetailRepoViewModel: DetailRepoViewModelProtocol {
     
     func fetchRepoCommits(with user: String, repo: String, page: Int) {
         APIGitHub().fetchRepoCommits(user: user, repo: repo, page: page) { [weak self] (result, err) in
-            guard let result = result else {
-                self?.didFetchCommits(nil, err)
-                return
+            if let err = err {
+                self?.responseMessage = err.message
+                self?.failFetchCommits(err.message)
             }
+            
+            guard let result = result else { return }
              
             self?.commits = result
-            self?.didFetchCommits(result, err)
+            self?.didFetchCommits(result)
         }
     }
     
     func fetchRepoLanguages(with user: String, repo: String) {
         APIGitHub().fetchRepoLanguages(user: user, repo: repo) { [weak self] (result, err) in
-            guard let result = result else {
-                self?.didFetchLanguages(nil, err)
-                return
+            if let err = err {
+                self?.responseMessage = err.message
+                self?.failFetchLanguages(err.message)
             }
+            
+            guard let result = result else { return }
              
             self?.languages = result.name.sorted()
             if result.name.contains("documentation_url") {
                 self?.languages = []
             }
-            self?.didFetchLanguages(result, err)
+            self?.didFetchLanguages(result)
         }
     }
     

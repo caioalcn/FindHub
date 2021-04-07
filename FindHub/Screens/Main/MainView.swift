@@ -19,7 +19,7 @@ final class MainView: UIView {
     let loadMoreSpinner: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView(style: .large)
         activity.hidesWhenStopped = true
-        activity.color = UIColor(named: AssetsColors.navigation.rawValue)
+        activity.color = UIColor(named: AssetsColors.label.rawValue)
         
         return activity
     }()
@@ -53,7 +53,7 @@ final class MainView: UIView {
         
         addSubview(tableView)
         
-        let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow })!
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
         window.addSubview(introView)
         
         NSLayoutConstraint.activate([

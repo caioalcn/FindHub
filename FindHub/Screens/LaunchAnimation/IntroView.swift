@@ -37,6 +37,18 @@ final class IntroView: UIView {
         return imageView
     }()
     
+    let versionLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        
+        label.text = "v" + DeviceHelper.version() + " " + "("+DeviceHelper.versionBuild()+")"
+        label.font = UIFont(name: "Futura-Medium", size: 14)
+        label.textAlignment = .right
+        label.textColor = UIColor(named: AssetsColors.label.rawValue)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     var viewsHeightConstraint: NSLayoutConstraint!
     var topViewBottomConstraint: NSLayoutConstraint!
     
@@ -54,6 +66,7 @@ final class IntroView: UIView {
         addSubview(topView)
         addSubview(bottomView)
         insertSubview(logoImage, at: 2)
+        bottomView.addSubview(versionLabel)
                 
         viewsHeightConstraint = bottomView.heightAnchor.constraint(equalTo: self.topView.heightAnchor, multiplier: 1)
         topViewBottomConstraint =  topView.bottomAnchor.constraint(equalTo: self.bottomView.topAnchor)
@@ -74,6 +87,9 @@ final class IntroView: UIView {
             logoImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             logoImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
+            versionLabel.trailingAnchor.constraint(equalTo: self.bottomView.trailingAnchor, constant: -5),
+            versionLabel.bottomAnchor.constraint(equalTo: self.bottomView.bottomAnchor, constant: -5),
+            
             viewsHeightConstraint,
         ])
         
@@ -87,6 +103,7 @@ final class IntroView: UIView {
         UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: .curveEaseOut) { [weak self] in
             self?.layoutIfNeeded()
             
+            self?.versionLabel.alpha = 0
             self?.logoImage.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
         } completion: { [weak self] _ in
             self?.removeFromSuperview()

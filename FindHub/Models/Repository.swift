@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Repository: Codable {
+struct Repository: Codable, Hashable {
     let owner: Owner
     let name: String
     let stargazersCount: Int
     let language: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case owner = "owner"
         case name = "name"

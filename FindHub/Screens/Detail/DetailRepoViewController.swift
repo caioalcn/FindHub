@@ -24,7 +24,7 @@ final class DetailRepoController: UIViewController {
     private var isLoadingCommitsData = false
     private var isLoadingLanguagesData = false
 
-    init(viewModel: DetailRepoViewModel, repository: Repository){
+    init(viewModel: DetailRepoViewModel, repository: Repository) {
         viewModel.repository = repository
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -52,15 +52,22 @@ final class DetailRepoController: UIViewController {
     }
     
     private func configureViewModel() {
-        self.viewModel.didFetchCommits = { [weak self] result, err in
-            if err == ServiceErrors.noInternet {
-                self?.presentAlertWithTitleOneButton(title: "Connection Problem", message: "Please check your internet connnection!", buttonTitle: "OK")
-            }
+        self.viewModel.didFetchCommits = { [weak self] result in
             self?.isLoadingCommitsData = false
             self?.detailRepoView.tableView.reloadData()
         }
         
-        self.viewModel.didFetchLanguages = { [weak self] result, err in
+        self.viewModel.didFetchLanguages = { [weak self] result in
+            self?.isLoadingLanguagesData = false
+            self?.detailRepoView.tableView.reloadData()
+        }
+        
+        self.viewModel.failFetchCommits = { [weak self] err in
+            self?.isLoadingCommitsData = false
+            self?.detailRepoView.tableView.reloadData()
+        }
+        
+        self.viewModel.failFetchLanguages = { [weak self] err in
             self?.isLoadingLanguagesData = false
             self?.detailRepoView.tableView.reloadData()
         }
@@ -83,8 +90,18 @@ extension DetailRepoController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
+            if !isLoadingLanguagesData && viewModel.languages.isEmpty {
+                tableView.setEmptyMessage(viewModel.responseMessage, isLoading: false)
+            } else {
+                tableView.restore()
+            }
             return isLoadingLanguagesData ? 1 : viewModel.languages.count
         } else {
+            if !isLoadingCommitsData && viewModel.commits.isEmpty {
+                tableView.setEmptyMessage(viewModel.responseMessage, isLoading: false)
+            } else {
+                tableView.restore()
+            }
             return isLoadingCommitsData ? 1 : viewModel.commits.count
         }
     }

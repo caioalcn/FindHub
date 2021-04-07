@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		541A24D8261E318E000C6672 /* DeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541A24D7261E318E000C6672 /* DeviceHelper.swift */; };
 		542564BD261666CD0038CECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564BC261666CD0038CECC /* AppDelegate.swift */; };
 		542564BF261666CD0038CECC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564BE261666CD0038CECC /* SceneDelegate.swift */; };
 		542564C3261666DA0038CECC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542564C2261666DA0038CECC /* Assets.xcassets */; };
@@ -21,6 +22,8 @@
 		542564F9261672DC0038CECC /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564F8261672DC0038CECC /* Service.swift */; };
 		542564FD2616732B0038CECC /* APIGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542564FC2616732B0038CECC /* APIGitHub.swift */; };
 		54256502261684B90038CECC /* DetailRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54256501261684B90038CECC /* DetailRepoViewController.swift */; };
+		543A617F261C9B5400502890 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A617E261C9B5400502890 /* ErrorMessage.swift */; };
+		543A6182261CC33900502890 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543A6181261CC33900502890 /* Data+Extension.swift */; };
 		544E97B9261788A200F405F3 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E97B8261788A100F405F3 /* CustomNavigationController.swift */; };
 		544E97C22617BB0100F405F3 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544E97C12617BB0100F405F3 /* Repository.swift */; };
 		54C2BBCA2618101E00A0978B /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2BBC92618101E00A0978B /* MainCell.swift */; };
@@ -48,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		541A24D7261E318E000C6672 /* DeviceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceHelper.swift; sourceTree = "<group>"; };
 		542564B9261666CD0038CECC /* FindHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542564BC261666CD0038CECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		542564BE261666CD0038CECC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 		542564F8261672DC0038CECC /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		542564FC2616732B0038CECC /* APIGitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGitHub.swift; sourceTree = "<group>"; };
 		54256501261684B90038CECC /* DetailRepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepoViewController.swift; sourceTree = "<group>"; };
+		543A617E261C9B5400502890 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		543A6181261CC33900502890 /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		544E97B8261788A100F405F3 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		544E97C12617BB0100F405F3 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		54C2BBC92618101E00A0978B /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 				54C2BBFA261A56A000A0978B /* Author.swift */,
 				54C2BBFD261A56FD00A0978B /* Committer.swift */,
 				54C2BC0A261A7A2C00A0978B /* Language.swift */,
+				543A617E261C9B5400502890 /* ErrorMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 				54C2BBE4261A276600A0978B /* UITableView+Extension.swift */,
 				54C2BC05261A6D2B00A0978B /* String+Extension.swift */,
 				54C2BC32261AB7DC00A0978B /* UIViewController+Extension.swift */,
+				543A6181261CC33900502890 /* Data+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -247,6 +255,7 @@
 				54C2BC13261AB30700A0978B /* Reachability.swift */,
 				54C2BC35261ABC3900A0978B /* ReachabilityManager.swift */,
 				54C2BC3B261AC8AF00A0978B /* AssetsColors.swift */,
+				541A24D7261E318E000C6672 /* DeviceHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -333,6 +342,7 @@
 				542564DD26166A860038CECC /* AppCoordinator.swift in Sources */,
 				54C2BBE026197CBC00A0978B /* UIColor+Extension.swift in Sources */,
 				54C2BC0B261A7A2C00A0978B /* Language.swift in Sources */,
+				543A617F261C9B5400502890 /* ErrorMessage.swift in Sources */,
 				542564E926166C580038CECC /* MainView.swift in Sources */,
 				54C2BC02261A59BC00A0978B /* Owner.swift in Sources */,
 				54C2BBCA2618101E00A0978B /* MainCell.swift in Sources */,
@@ -347,6 +357,7 @@
 				54C2BC0F261A8A2F00A0978B /* DetailLanguageCell.swift in Sources */,
 				54C2BBFB261A56A000A0978B /* Author.swift in Sources */,
 				542564F3261672850038CECC /* Router.swift in Sources */,
+				541A24D8261E318E000C6672 /* DeviceHelper.swift in Sources */,
 				54C2BBEC261A357400A0978B /* DetailRepoViewModel.swift in Sources */,
 				54C2BC36261ABC3900A0978B /* ReachabilityManager.swift in Sources */,
 				542564BF261666CD0038CECC /* SceneDelegate.swift in Sources */,
@@ -359,6 +370,7 @@
 				54C2BBDA26197A8A00A0978B /* GitHubColors.swift in Sources */,
 				542564E026166AC90038CECC /* CoordinatorType.swift in Sources */,
 				542564F9261672DC0038CECC /* Service.swift in Sources */,
+				543A6182261CC33900502890 /* Data+Extension.swift in Sources */,
 				542564F6261672B10038CECC /* HTTPMethod.swift in Sources */,
 				54C2BBE9261A356600A0978B /* DetailRepoView.swift in Sources */,
 				54C2BC06261A6D2B00A0978B /* String+Extension.swift in Sources */,
