@@ -87,8 +87,8 @@ final class IntroView: UIView {
             logoImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             logoImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            versionLabel.trailingAnchor.constraint(equalTo: self.bottomView.trailingAnchor, constant: -5),
-            versionLabel.bottomAnchor.constraint(equalTo: self.bottomView.bottomAnchor, constant: -5),
+            versionLabel.centerXAnchor.constraint(equalTo: self.bottomView.centerXAnchor, constant: 0),
+            versionLabel.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: self.bottomView.safeAreaLayoutGuide.bottomAnchor, constant: -3),
             
             viewsHeightConstraint,
         ])
