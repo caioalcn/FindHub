@@ -5,7 +5,7 @@
 FindHub it's a easy way to find a user's repositories and the latest commits.
 To run the app just clone the repository and run in Xcode.
 
-The app architecture choose was MVVM to avoid massive view controllers, readability and also to enable the ability to scale.
+The app architecture used MVVM to avoid massive view controllers, readability and also to enable the ability to scale.
 
 ## Covered topics
 - [x] UITableView Diffable Data Source
